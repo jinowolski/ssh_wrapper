@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "hello!"
+echo
+echo "arguments: "
+while : ; do
+    echo "  $1"
+    shift || break
+done;
+
