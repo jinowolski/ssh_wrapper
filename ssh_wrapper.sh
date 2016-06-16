@@ -3,7 +3,7 @@
 set -e
 set -f
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P )"
 COMMANDS_DIR="$DIR/commands"
 set -- $SSH_ORIGINAL_COMMAND
 COMMAND="$1"
