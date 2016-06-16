@@ -12,7 +12,7 @@ EXECUTABLE=$(realpath "$COMMANDS_DIR/$COMMAND")
 EXECUTABLE_DIR=$(dirname "$EXECUTABLE")
 
 if [ "$EXECUTABLE_DIR" != "$COMMANDS_DIR" ]; then
-    >2& echo "Unknown command."
+    echo "Unknown command." 1>&2
     logger -p auth.warning -- "ssh_wrapper WARNING: Invalid directory. Caller tried command '$COMMAND'."
     exit 1
 fi
@@ -20,10 +20,10 @@ fi
 if [ ! -x "$EXECUTABLE" ]; then
     if [ -f "$EXECUTABLE" ]; then
         logger -p auth.info -- "ssh_wrapper INFO: Command '$COMMAND' exists, but cannot be executed."
-        >2& echo "This command exists, but cannot be executed."
+        echo "This command exists, but cannot be executed." 1>&2
     else
         logger -p auth.info -- "ssh_wrapper INFO: Unknown command '$COMMAND'."
-        >2& echo "Unknown command."
+        echo "Unknown command." 1>&2
     fi
     exit 1
 fi
