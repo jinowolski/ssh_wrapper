@@ -29,4 +29,4 @@ if [ ! -x "$EXECUTABLE" ]; then
 fi
 
 logger -p auth.info -- "ssh_wrapper INFO: Executing command '$COMMAND' with args '$@'."
-$EXECUTABLE "$@"
+bash -c "$(echo "$EXECUTABLE $@")"
